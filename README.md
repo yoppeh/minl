@@ -1,7 +1,7 @@
 # minl
 Scripted build of a minimal linux system based on [Linux From Scratch](http://www.linuxfromscratch.org).
 
-These scripts must be run as root. If you want to work out some way to run as a regular user, check out environment.sh, 1-01-filesystem.sh and 2-01-filesystem.sh.
+These scripts must be run as root. If you want to work out some way to run as a regular user, check out environment.sh, 1-01-filesystem.sh and 2-01-filesystem.sh. This should be buildable from any modern host system with a dev-tools package installed. I use Arch Linux.
 
 ## Procedure
 - `su -`
