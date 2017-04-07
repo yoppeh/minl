@@ -19,7 +19,7 @@ PASS=1 gcc_v='6.3.0' mpfr_v='3.1.5' gmp_v='6.1.2' mpc_v='1.0.3' ./1-gcc.sh
 linux_v='4.10.8' ./1-linux-headers.sh
 glibc_v='2.25' ./1-glibc.sh
 gcc_v='6.3.0' mpfr_v='3.1.5' gmp_v='6.1.2' mpc_v='1.0.3' ./1-libstdc++.sh
-PASS=2 binutils_v='2.27' ./1-binutils.sh
+PASS=2 binutils_v='2.28' ./1-binutils.sh
 PASS=2 gcc_v='6.3.0' mpfr_v='3.1.5' gmp_v='6.1.2' mpc_v='1.0.3' ./1-gcc.sh
 tcl_v='8.6.6' ./1-tcl.sh
 expect_v='5.45' ./1-expect.sh
@@ -47,6 +47,10 @@ tar_v='1.29' ./1-tar.sh
 texinfo_v='6.3' ./1-texinfo.sh
 util_linux_v='2.29.2' ./1-util-linux.sh
 xz_v='5.2.3' ./1-xz.sh
+libcap_v='2.25' ./1-libcap.sh
+fakeroot_v='1.21' ./1-fakeroot.sh
+libarchive_v='3.3.1' ./1-libarchive.sh
+pacman_v='5.0.1' ./1-pacman.sh
 
 ./1-devices.sh
 ./1-chroot.sh

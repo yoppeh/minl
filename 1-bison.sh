@@ -6,7 +6,7 @@ echo "building bison..."
 set -e
 cd $MINL/sources
 rm -rf bison-${bison_v}
-tar xf bison-${bison_v}.tar.gz
+tar xf bison-${bison_v}.tar.xz
 cd bison-${bison_v}
 ./configure --prefix=/tools
 make

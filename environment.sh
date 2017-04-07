@@ -10,7 +10,7 @@ export TARGET_DEV=
 export ROOT_DEV=
 export ROOT_PARTITION=
 export SWAP_DEV=
-export KERNEL_CONFIG=kernel-config.asus-zenbook-pro
+export KERNEL_CONFIG=kernel-config.virtualbox
 export TIMEZONE="America/Chicago"
 
 # The remainder can be left alone
