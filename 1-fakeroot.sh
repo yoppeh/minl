@@ -8,6 +8,10 @@ cd $MINL/sources
 rm -rf fakeroot-${fakeroot_v}
 tar xf fakeroot_${fakeroot_v}.orig.tar.gz
 cd fakeroot-${fakeroot_v}
+cd doc
+mv Makefile.am Makefile.am.original
+cat Makefile.am.original | sed 's/SUBDIRS/#SUBDIRS/' > Makefile.am
+cd ..
 ./bootstrap
 ./configure --prefix=/tools  --libdir=/tools/usr/lib/libfakeroot --with-ipc=sysv
 make

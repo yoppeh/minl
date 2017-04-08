@@ -6,7 +6,7 @@ echo "building libarchive..."
 set -e
 cd $MINL/sources
 rm -rf libarchive-${libarchive_v}
-tar xf libarchive-${libarchive_v}.orig.tar.gz
+tar xf libarchive-${libarchive_v}.tar.gz
 cd libarchive-${libarchive_v}
 ./configure --prefix=/tools  --without-xml2 --disable-shared
 make
