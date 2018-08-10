@@ -10,7 +10,7 @@ tar xf glibc-${glibc_v}.tar.xz
 cd glibc-${glibc_v}
 mkdir build
 cd build
-../configure --prefix=/tools --host=$MINL_TGT --target=$MINL_TGT --build=$(../scripts/config.guess) --enable-kernel=2.6.32 --with-headers=/tools/include libc_cv_forced_unwind=yes libc_cv_c_cleanup=yes
+../configure --prefix=/tools --host=$MINL_TGT --target=$MINL_TGT --build=$(../scripts/config.guess) --enable-kernel=3.2 --with-headers=/tools/include libc_cv_forced_unwind=yes libc_cv_c_cleanup=yes
 make -j1
 make install
 cd $MINL/sources

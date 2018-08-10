@@ -6,7 +6,7 @@ echo "building libstdc++..."
 set -e
 cd $MINL/sources
 rm -rf gcc-${gcc_v}
-tar xf gcc-${gcc_v}.tar.bz2
+tar xf gcc-${gcc_v}.tar.xz
 cd gcc-${gcc_v}
 mkdir build
 cd build

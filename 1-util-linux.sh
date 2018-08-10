@@ -8,7 +8,7 @@ cd $MINL/sources
 rm -rf util-linux-${util_linux_v}
 tar xf util-linux-${util_linux_v}.tar.xz
 cd util-linux-${util_linux_v}
-./configure --prefix=/tools --without-python --disable-makeinstall-chown --without-cap-ng --without-udev --without-readline --without-systemdsystemunitdir PKG_CONFIG=""
+./configure --prefix=/tools --without-python --disable-makeinstall-chown --without-ncurses --without-cap-ng --without-udev --without-readline --without-systemdsystemunitdir PKG_CONFIG=""
 make
 make install
 cd ..
