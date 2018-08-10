@@ -6,12 +6,12 @@
 # SWAP_DEV is the device name of the swap partition you will be using. This can be blank. For example: /dev/sdb2
 # KERNEL_CONFIG is the name of one of the kernel-config.xxxxxxxxx files in the minl repo. For example: kernel-config.virtualbox for a virtualbox vm kernel.
 # TIMEZONE is the timezone string you want. For example: "America/Chicago"
-export TARGET_DEV=/dev/nvme0n1
-export ROOT_DEV=/dev/nvme0n1p3
-export ROOT_PARTITION=3
-export SWAP_DEV=/dev/nvme0n1p5
-export KERNEL_CONFIG=kernel-config.virtualbox
-export TIMEZONE="America/Chicago"
+export TARGET_DEV=
+export ROOT_DEV=
+export ROOT_PARTITION=
+export SWAP_DEV=
+export KERNEL_CONFIG=
+export TIMEZONE=
 
 # The remainder can be left alone
 set +h

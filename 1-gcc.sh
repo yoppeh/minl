@@ -6,7 +6,7 @@ echo "building gcc pass $PASS..."
 set -e
 cd $MINL/sources
 rm -rf gcc-${gcc_v}
-tar xf gcc-${gcc_v}.tar.bz2
+tar xf gcc-${gcc_v}.tar.xz
 cd gcc-${gcc_v}
 if [ "$PASS" == "2" ] ; then
 	cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $($MINL_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
@@ -29,7 +29,7 @@ do
 done
 case $(uname -m) in
 	x86_64)
-		sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64 
+		sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64xz
 		;;
 	armv7l) 
 		sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure 

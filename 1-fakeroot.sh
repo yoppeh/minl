@@ -6,7 +6,7 @@ echo "building fakeroot..."
 set -e
 cd $MINL/sources
 rm -rf fakeroot-${fakeroot_v}
-tar xf fakeroot_${fakeroot_v}.orig.tar.gz
+tar xf fakeroot_${fakeroot_v}.orig.tar.xz
 cd fakeroot-${fakeroot_v}
 cd doc
 mv Makefile.am Makefile.am.original
