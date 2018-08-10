@@ -9,7 +9,8 @@ These scripts must be run as root. If you want to work out some way to run as a 
 - `cd /root/minl`
 - Choose a device to install to: USB stick, external USB drive, internal hard drive, whatever.
 - Run `fdisk /dev/xxxx`. My USB stick gets recognized as /dev/sda, so I run `fdisk /dev/sda` and create a 110GB root partition, type 82, make it active with the `a` command, then create a 2GB swap partition with type 80. `w` to write the changes and exit fdisk.
-- Check environment.sh and set the variables appropriately. The swap partition is optional, you can leave it blank with `SWAP_DEV=`. In my case above: `TARGET_DEV=/dev/sda`, `ROOT_DEV=/dev/sda1`, `ROOT_PARTITION=1`, `SWAP_DEV=/dev/sda2`
+- Check environment.sh.template and set the variables appropriately. The swap partition is optional, you can leave it blank with `SWAP_DEV=`. In my case above: `TARGET_DEV=/dev/sda`, `ROOT_DEV=/dev/sda1`, `ROOT_PARTITION=1`, `SWAP_DEV=/dev/sda2`
+- Rename environment.sh.template to environment.sh
 - Run `./get-sources.sh`
 - Run `./install-stage1.sh`
 - Run `cd /sources`
