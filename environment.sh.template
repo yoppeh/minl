@@ -17,7 +17,9 @@ export TIMEZONE=
 set +h
 umask 022
 
+if [ "$BOOT_PARTITION" != "" ] ; then
 export BOOT_DEV=$(TARGET_DEV)$(BOOT_PARTITION)
+fi
 export ROOT_DEV=$(TARGET_DEV)$(ROOT_PARTITION)
 export SWAP_DEV=$(TARGET_DEV)$(SWAP_PARTITION)
 export MINL=/mnt/minl

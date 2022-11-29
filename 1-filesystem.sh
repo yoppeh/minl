@@ -7,18 +7,22 @@ if [ -e /tools ] ; then
 	rm -rf /tools
 fi
 if [ "$ROOT_DEV" != "" ] ; then
-umount $ROOT_DEV
-mkfs.ext4 -F $ROOT_DEV
-mount $ROOT_DEV $MINL
+    umount --recursive $ROOT_DEV
+    mkfs.ext4 -F $ROOT_DEV
+    mount $ROOT_DEV $MINL
 fi
 if [ "$SWAP_DEV" != "" ] ; then
-swapoff $SWAP_DEV
-mkswap $SWAP_DEV
-swapon $SWAP_DEV
+    swapoff $SWAP_DEV
+    mkswap $SWAP_DEV
+    swapon $SWAP_DEV
+fi
+mkdir $MINL/boot
+if [ "$BOOT_DEV" != "" ] ; then
+    mkfs.fat $BOOT_DEV
+    mount $BOOT_DEV $MINL/boot
 fi
 mkdir -p $MINL/tools
 mkdir -p $MINL/sources
-mkdir -p $MINL/boot
 chmod a+wt $MINL/sources
 ln -s $MINL/tools /
 cp * $MINL/sources
