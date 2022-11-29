@@ -1,15 +1,15 @@
 
 # Set this block of variables according to your system
 # TARGET_DEV is the device name of the disk you are installing to. For example: /dev/sdb
-# ROOT_DEV is the device name of the root partition you are installing to. For example: /dev/sdb1
-# ROOT_PARTITION is the partition # of the root partition you are installing to. For example: 1
-# SWAP_DEV is the device name of the swap partition you will be using. This can be blank. For example: /dev/sdb2
+# BOOT_PARTITION is the partition # of the boot partition you are installing to. For example: 1
+# ROOT_PARTITION is the partition # of the root partition you are installing to. For example: 2
+# SWAP_PARTITION is the partition # of the swap partition you will be using. This can be blank. For example: 3
 # KERNEL_CONFIG is the name of one of the kernel-config.xxxxxxxxx files in the minl repo. For example: kernel-config.virtualbox for a virtualbox vm kernel.
 # TIMEZONE is the timezone string you want. For example: "America/Chicago"
 export TARGET_DEV=
-export ROOT_DEV=
 export ROOT_PARTITION=
-export SWAP_DEV=
+export BOOT_PARTITION=
+export SWAP_PARTITION=
 export KERNEL_CONFIG=
 export TIMEZONE=
 
@@ -17,6 +17,9 @@ export TIMEZONE=
 set +h
 umask 022
 
+export BOOT_DEV=$(TARGET_DEV)$(BOOT_PARTITION)
+export ROOT_DEV=$(TARGET_DEV)$(ROOT_PARTITION)
+export SWAP_DEV=$(TARGET_DEV)$(SWAP_PARTITION)
 export MINL=/mnt/minl
 export LC_ALL=POSIX
 
