@@ -19,9 +19,6 @@ else
 		x86_64)
 			CC=${MINL_TGT}-gcc AR=$MINL_TGT-ar RANLIB=$MINL_TGT-ranlib ../configure --prefix=/tools --disable-nls --disable-werror --with-lib-path=/tools/lib --with-sysroot
 			;;
-		armv7l)
-			CC=${MINL_TGT}-gcc AR=$MINL_TGT-ar RANLIB=$MINL_TGT-ranlib ../configure --prefix=/tools --target=$MINL_TGT --disable-nls --disable-werror --with-lib-path=/tools/lib --with-sysroot
-			;;
 	esac
 fi
 make

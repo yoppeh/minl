@@ -33,11 +33,4 @@ case $(uname -m) in
 	x86_64)
 		export MINL_TGT=$(uname -m)-minl-linux-gnu
 		;;
-	armv7l)
-		export MINL_ARCH="arm"
-		export MINL_ARM_ARCH="arm7-a"
-		export MINL_FLOAT="hard"
-		export MINL_FPU="neon"
-		export MINL_TGT=arm-minl-linux-gnueabihf
-		;;
 esac

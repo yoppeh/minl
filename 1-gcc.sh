@@ -31,9 +31,6 @@ case $(uname -m) in
 	x86_64)
 		sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 		;;
-	armv7l) 
-		sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' gcc/configure 
-		;;
 esac
 mkdir build
 cd build
@@ -45,13 +42,6 @@ case $(uname -m) in
 			../configure --prefix=/tools --target=$MINL_TGT --with-glibc-version=2.11 --with-sysroot=$MINL --with-newlib --without-headers --with-local-prefix=/tools --with-native-system-header-dir=/tools/include --disable-nls --disable-shared --disable-multilib --disable-decimal-float --disable-threads --disable-libatomic --disable-libgomp --disable-libmpx --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++ 
 		else
 			CC=$MINL_TGT-gcc CXX=$MINL_TGT-g++ AR=$MINL_TGT-ar RANLIB=$MINL_TGT-ranlib ../configure --prefix=/tools --with-local-prefix=/tools --with-native-system-header-dir=/tools/include --enable-languages=c,c++ --disable-libstdcxx-pch --disable-multilib --disable-bootstrap --disable-libgomp
-		fi
-		;;
-	armv71)
-		if [ "$PASS" == "1" ] ; then
-			../configure --prefix=/tools --target=$MINL_TGT --with-glibc-version=2.11 --with-sysroot=$MINL --with-newlib --without-headers --with-local-prefix=/tools --with-native-system-header-dir=/tools/include --disable-nls --disable-shared --disable-multilib --disable-decimal-float --disable-threads --disable-libatomic --disable-libgomp --disable-libmpx --disable-libquadmath --disable-libssp --disable-libvtv --disable-libstdcxx --enable-languages=c,c++ --with-arch=$MINL_ARCH --with-float=$MINL_FLOAT --with-fpu=$MINL_FPU
-		else
-			CC=$MINL_TGT-gcc CXX=$MINL_TGT-g++ AR=$MINL_TGT-ar RANLIB=$MINL_TGT-ranlib ../configure --prefix=/tools --target=$MINL_TGT --with-glibc-version=2.11 --with-local-prefix=/tools --with-native-system-header-dir=/tools/include --enable-languages=c,c++ --disable-libstdcxx-pch --disable-multilib --disable-bootstrap --disable-libgomp --with-arch=$MINL_ARCH --with-float=$MINL_FLOAT --with-fpu=$MINL_FPU
 		fi
 		;;
 esac

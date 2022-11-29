@@ -14,9 +14,6 @@ case $(uname -m) in
 	x86_64)
 		make INSTALL_HDR_PATH=dest headers_install
 		;;
-	armv7l)
-		make ARCH=${MINL_ARCH} INSTALL_HDR_PATH=dest headers_install
-		;;
 esac
 cp -r dest/include/* /tools/include
 cd $MINL/sources
