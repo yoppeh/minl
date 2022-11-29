@@ -18,7 +18,6 @@ http://dev.gentoo.org/~blueness/eudev/eudev-3.2.5.tar.gz
 http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.43.9/e2fsprogs-1.43.9.tar.gz
 http://prdownloads.sourceforge.net/expat/expat-2.2.5.tar.bz2
 http://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz
-http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.23.orig.tar.xz
 ftp://ftp.astron.com/pub/file/file-5.32.tar.gz
 http://ftp.gnu.org/gnu/findutils/findutils-4.6.0.tar.gz
 https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
@@ -41,7 +40,6 @@ https://www.kernel.org/pub/linux/utils/kbd/kbd-2.0.4.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-25.tar.xz
 http://www.greenwoodsoftware.com/less/less-530.tar.gz
 http://www.linuxfromscratch.org/lfs/downloads/8.2/lfs-bootscripts-20170626.tar.bz2
-http://libarchive.org/downloads/libarchive-3.3.2.tar.gz
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.25.tar.xz
 ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
 http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.0.tar.gz
@@ -56,7 +54,6 @@ https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
 http://www.mpfr.org/mpfr-4.0.1/mpfr-4.0.1.tar.xz
 http://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
 http://openssl.org/source/openssl-1.1.0g.tar.gz
-https://sources.archlinux.org/other/pacman/pacman-5.1.1.tar.gz
 http://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz
 http://www.cpan.org/src/5.0/perl-5.26.1.tar.bz2
 https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz

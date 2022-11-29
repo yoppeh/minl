@@ -49,9 +49,6 @@ xz_v='5.2.6' ./1-xz.sh
 check_v='0.15.2' ./1-check.sh
 zlib_v='1.2.12' ./1-zlib.sh
 libcap_v='2.65' ./1-libcap.sh
-fakeroot_v='1.23' ./1-fakeroot.sh
-libarchive_v='3.3.2' ./1-libarchive.sh
-pacman_v='5.1.1' ./1-pacman.sh
 
 ./1-devices.sh
 ./1-chroot.sh
