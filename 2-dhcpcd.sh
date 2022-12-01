@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/2-dhcpcd ] ; then
 	exit 0
 fi
@@ -32,7 +33,7 @@ cat > /etc/resolv.conf.head << "EOF"
 # OpenDNS servers
 nameserver 208.67.222.222
 nameserver 208.67.220.220
-ENOF
+EOF
 
 cd ..
 rm -rf dhcpcd-${dhcpcd_v}

@@ -52,7 +52,7 @@ echo "https://ftp.gnu.org/gnu/libtool/libtool-${libtool_v}.tar.xz" >> wget-list
 echo "https://www.kernel.org/pub/linux/kernel/v${linux_major_v}.x/linux-${linux_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/m4/m4-${m4_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/make/make-${make_v}.tar.gz" >> wget-list
-echo "https://download.savannah.gnu.org/releases/man-db/man-db-${man_db_v}.tar.xz" >> wget-list
+echo "https://download.savannah.gnu.org/releases/man-db/man-db-${mandb_v}.tar.xz" >> wget-list
 echo "https://www.kernel.org/pub/linux/docs/man-pages/man-pages-${man_pages_v}.tar.xz" >> wget-list
 echo "https://github.com/mesonbuild/meson/releases/download/${meson_v}/meson-${meson_v}.tar.gz" >> wget-list
 echo "https://ftp.gnu.org/gnu/mpc/mpc-${mpc_v}.tar.gz" >> wget-list
@@ -78,6 +78,7 @@ echo "https://downloads.sourceforge.net/tcl/tcl${tcl_v}-html.tar.gz" >> wget-lis
 echo "https://ftp.gnu.org/gnu/texinfo/texinfo-${texinfo_v}.tar.xz" >> wget-list
 echo "https://www.iana.org/time-zones/repository/releases/tzdata${tzdata_v}.tar.gz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/udev-lfs-${udev_lfs_v}.tar.xz" >> wget-list
+echo "https://unifoundry.com/pub/unifont/unifont-${unitfont_v}/font-builds/unifont-${unifont_v}.pcf.gz" >> wget-list
 echo "https://www.kernel.org/pub/linux/utils/util-linux/v${util_linux_base_v}/util-linux-${util_linux_v}.tar.xz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/vim-${vim_v}.tar.gz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/wheel-${wheel_v}.tar.gz" >> wget-list

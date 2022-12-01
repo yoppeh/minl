@@ -1,9 +1,13 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/3-rc-site ] ; then
 	exit 0
 fi
+
 echo "configuring rc.site..."
+
 set -e
+
 cat > /etc/sysconfig/rc.site << "EOF"
 # rc.site
 # Optional parameters for boot scripts.
@@ -97,4 +101,5 @@ cat > /etc/sysconfig/rc.site << "EOF"
 #FONT="lat0-16 -m 8859-15"
 #LEGACY_CHARSET=
 EOF
+
 touch $PROGRESS_DIR/3-rc-site

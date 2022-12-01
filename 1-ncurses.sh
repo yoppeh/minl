@@ -1,17 +1,44 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/1-ncurses ] ; then
 	exit 0
 fi
+
 echo "building ncurses..."
+
 set -e
+
 cd $MINL/sources
 rm -rf ncurses-${ncurses_v}
 tar xf ncurses-${ncurses_v}.tar.gz
 cd ncurses-${ncurses_v}
+
 sed -i s/mawk// configure
-./configure --prefix=/tools --with-shared --without-debug --without-ada --enable-widec --enable-overwrite
+
+mkdir build
+pushd build
+../configure
+make -C include
+make -C progs tic
+popd
+
+./configure \
+    --prefix=/usr \
+    --host=$MINL_TGT \
+    --build=$(./config.guess) \
+    --mandir=/usr/share/man \
+    --with-manpage-format=normal \
+    --with-shared \
+    --without-normal \
+    --with-cxx-shared \
+    --without-debug \
+    --without-ada \
+    --disable-stripping \
+    --enable-widec
 make
-make install
+make DESTDIR=$MINL TIC_PATH=$(pwd)/build/progs/tic install
+echo "INPUT(-lncursesw)" > $MINL/usr/lib/libncurses.so
+
 cd ..
 rm -rf ncurses-${ncurses_v}
 touch $PROGRESS_DIR/1-ncurses

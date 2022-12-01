@@ -1,16 +1,26 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/1-findutils ] ; then
 	exit 0
 fi
+
 echo "building findutils..."
+
 set -e
+
 cd $MINL/sources
 rm -rf findutils-${findutils_v}
-tar xf findutils-${findutils_v}.tar.gz
+tar xf findutils-${findutils_v}.tar.xz
 cd findutils-${findutils_v}
-./configure --prefix=/tools
+
+./configure \
+    --prefix=/usr \
+    --localstatedir=/var/lib/locate \
+    --host=$MINL_TGT \
+    --build=$(build-aux/config.guess)
 make
-make install
+make DESTDIR=$MINL install
+
 cd ..
 rm -rf findutils-${findutils_v}
 touch $PROGRESS_DIR/1-findutils

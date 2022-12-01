@@ -1,9 +1,13 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/3-inputrc ] ; then
 	exit 0
 fi
+
 echo "configuring inputrc..."
+
 set -e
+
 cat > /etc/inputrc << "EOF"
 # Begin /etc/inputrc
 # Modified by Chris Lynn <roryo@roryo.dynup.net>
@@ -47,4 +51,5 @@ set bell-style none
 
 # End /etc/inputrc
 EOF
+
 touch $PROGRESS_DIR/3-inputrc

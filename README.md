@@ -1,6 +1,6 @@
 # minl
 
-Scripted build of a minimal linux system based on [Linux From Scratch](http://www.linuxfromscratch.org).
+Scripted build of a minimal linux system based on [Linux From Scratch](http://www.linuxfromscratch.org). This iteration of minl is pretty much LFS 11.2. I am using the name "minl" to avoid people thinking this is somehow an official LFS project.
 
 These scripts must be run as root. If you want to work out some way to run as a regular user, check out environment.sh, 1-01-filesystem.sh and 2-01-filesystem.sh. This should be buildable from any modern host system with a dev-tools package installed. I use Arch Linux.
 

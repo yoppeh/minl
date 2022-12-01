@@ -1,9 +1,13 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/3-network ] ; then
 	exit 0
 fi
+
 echo "configuring network..."
+
 set -e
+
 cat > /etc/sysconfig/ifconfig.eth0 << "EOF"
 ONBOOT=yes
 IFACE=eth0
@@ -27,4 +31,5 @@ echo "minl" > /etc/hostname
 cat > /etc/hosts << "EOF"
 127.0.0.1 localhost
 EOF
+
 touch $PROGRESS_DIR/3-network

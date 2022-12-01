@@ -1,9 +1,13 @@
 #!/bin/bash
+
 if [ -f $PROGRESS_DIR/3-inittab ] ; then
 	exit 0
 fi
+
 echo "setting up inittab..."
+
 set -e
+
 cat > /etc/inittab << "EOF"
 id:3:initdefault:
 
