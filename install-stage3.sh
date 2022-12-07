@@ -6,8 +6,6 @@
 
 [ -z "$MINLENV" ] && exec env -i MINLENV=1 /bin/bash "$0"
 
-export PATH=/bin:/usr/bin:/sbin:/usr/sbin
-
 . ./environment.sh
 . ./package-versions.sh
 
@@ -22,7 +20,6 @@ set -e
 ./3-inputrc.sh
 ./3-shells.sh
 ./3-fstab.sh
-./3-kernel.sh
 #./3-bootloader.sh
 ./3-blfs-bootscripts.sh
 ./3-finish.sh

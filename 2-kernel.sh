@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. ./environment.sh
+. ./package-versions.sh
+
 if [ -f $PROGRESS_DIR/3-kernel ] ; then
 	exit 0
 fi
@@ -17,9 +20,9 @@ make mrproper
 cp ../$KERNEL_CONFIG .config
 make
 make modules_install
-cp arch/x86/boot/bzImage /boot/vmlinuz-${linux_v}-minl
-cp System.map /boot/System.map-${linux_v}
-cp .config /boot/config-${linux_v}
+cp arch/x86/boot/bzImage /boot/minl/vmlinuz-${linux_v}-minl
+cp System.map /boot/minl/System.map-${linux_v}
+cp .config /boot/minl/config-${linux_v}
 install -d /usr/share/doc/linux-${linux_v}
 cp -r Documentation/* /usr/share/doc/linux-${linux_v}
 install -m755 -d /etc/modprobe.d

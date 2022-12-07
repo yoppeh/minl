@@ -1,9 +1,16 @@
 #!/bin/bash
+
+. ./environment.sh
+. ./package-versions.sh
+
 if [ -f $PROGRESS_DIR/3-bootloader ] ; then
 	exit 0
 fi
+
 echo "setting up bootloader..."
+
 set -e
+
 grub-install $TARGET_DEV
 cat > /boot/grub/grub.cfg << EOF
 # begin /boot/grub/grub.cfg
@@ -16,4 +23,5 @@ menuentry "minl" {
 }
 # end /boot/grub/grub.cfg
 EOF
+
 touch $PROGRESS_DIR/3-bootloader

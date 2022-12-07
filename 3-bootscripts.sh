@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. ./environment.sh
+. ./package-versions.sh
+
 if [ -f $PROGRESS_DIR/3-bootscripts ] ; then
 	exit 0
 fi

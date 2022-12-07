@@ -1,5 +1,10 @@
 #!/bin/bash
 
+. ./environment.sh
+. ./package-versions.sh
+
+export FORCE_UNSAFE_CONFIGURE=1
+
 if [ -f $PROGRESS_DIR/2-readline ] ; then
 	exit 0
 fi

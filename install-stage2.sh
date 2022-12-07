@@ -11,12 +11,6 @@ export FORCE_UNSAFE_CONFIGURE=1
 . ./environment.sh
 . ./package-versions.sh
 
-PATH=/usr/bin:/usr/sbin
-if [ ! -L /bin ] ; then PATH=/bin:$PATH ; fi
-export PATH=$MINL/tools/bin:$PATH
-
-export PROGRESS_DIR=/progress
-
 set -e
 
 ./2-filesystem.sh
@@ -109,3 +103,4 @@ PASS=2 ./2-util-linux.sh
 ./2-sysklogd.sh
 ./2-sysvinit.sh
 ./2-dhcpcd.sh
+./2-kernel.sh

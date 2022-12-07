@@ -1,5 +1,10 @@
 #!/bin/bash
 
+. ./environment.sh
+. ./package-versions.sh
+
+export FORCE_UNSAFE_CONFIGURE=1
+
 if [ -f $PROGRESS_DIR/1-filesystem ] ; then
 	exit 0
 fi
@@ -50,6 +55,7 @@ esac
 mkdir -p $PROGRESS_DIR
 mkdir -p $MINL/sources
 mkdir -p $MINL/tools
+mkdir -p $MINL/boot/minl
 ln -s $MINL/tools /tools
 cp -R * $MINL/sources
 

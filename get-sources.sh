@@ -78,7 +78,7 @@ echo "https://downloads.sourceforge.net/tcl/tcl${tcl_v}-html.tar.gz" >> wget-lis
 echo "https://ftp.gnu.org/gnu/texinfo/texinfo-${texinfo_v}.tar.xz" >> wget-list
 echo "https://www.iana.org/time-zones/repository/releases/tzdata${tzdata_v}.tar.gz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/udev-lfs-${udev_lfs_v}.tar.xz" >> wget-list
-echo "https://unifoundry.com/pub/unifont/unifont-${unitfont_v}/font-builds/unifont-${unifont_v}.pcf.gz" >> wget-list
+echo "https://unifoundry.com/pub/unifont/unifont-${unifont_v}/font-builds/unifont-${unifont_v}.pcf.gz" >> wget-list
 echo "https://www.kernel.org/pub/linux/utils/util-linux/v${util_linux_base_v}/util-linux-${util_linux_v}.tar.xz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/vim-${vim_v}.tar.gz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/wheel-${wheel_v}.tar.gz" >> wget-list

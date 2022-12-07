@@ -6,16 +6,8 @@
 
 [ -z "$MINLENV" ] && exec env -i MINLENV=1 /bin/bash "$0"
 
-export FORCE_UNSAFE_CONFIGURE=1
-
 . ./environment.sh
 . ./package-versions.sh
-
-PATH=/usr/bin
-if [ ! -L /bin ] ; then PATH=/bin:$PATH ; fi
-export PATH=$MINL/tools/bin:$PATH
-
-export PROGRESS_DIR=$MINL/progress
 
 # prepare target environment
 ./1-filesystem.sh

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+. ./environment.sh
+. ./package-versions.sh
+
+export FORCE_UNSAFE_CONFIGURE=1
+
 set -e
 
 chroot "$MINL" /usr/bin/env -i \

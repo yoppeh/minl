@@ -25,6 +25,12 @@ export SWAP_DEV=${TARGET_DEV}${SWAP_PARTITION}
 export MINL=/mnt/minl
 export LC_ALL=POSIX
 export CONFIG_SITE=$MINL/usr/share/config.site
+export PROGRESS_DIR=$MINL/progress
+
+PATH=/usr/bin:/usr/sbin
+if [ ! -L /bin ] ; then PATH=/bin:$PATH ; fi
+if [ ! -L /sbin ] ; then PATH=/sbin:$PATH ; fi
+export PATH=$MINL/tools/bin:$PATH
 
 case $(uname -m) in
 	x86)
