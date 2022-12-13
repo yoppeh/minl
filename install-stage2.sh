@@ -84,8 +84,17 @@ PASS=2 ./2-python.sh
 ./2-gawk.sh
 ./2-findutils.sh
 ./2-groff.sh
+
+./2-mandoc.sh
+./2-efivar.sh
+./2-popt.sh
+./2-efibootmgr.sh
+./2-libpng.sh
+./2-which.sh
+./2-freetype.sh
 ./2-unifont.sh
 ./2-grub.sh
+
 ./2-gzip.sh
 ./2-iproute.sh
 ./2-kbd.sh

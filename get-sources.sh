@@ -19,6 +19,8 @@ echo "https://ftp.gnu.org/gnu/dejagnu/dejagnu-${dejagnu_v}.tar.gz" >> wget-list
 echo "http://roy.marples.name/downloads/dhcpcd/dhcpcd-${dhcpcd_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/diffutils/diffutils-${diffutils_v}.tar.xz" >> wget-list
 echo "https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v${e2fsprogs_v}/e2fsprogs-${e2fsprogs_v}.tar.gz" >> wget-list
+echo " https://github.com/rhboot/efibootmgr/archive/${efibootmgr_v}/efibootmgr-${efibootmgr_v}.tar.gz" >> wget-list
+echo "https://github.com/rhboot/efivar/releases/download/${efivar_v}/efivar-${efivar_v}.tar.bz2" >> wget-list
 echo "https://sourceware.org/ftp/elfutils/${elfutils_v}/elfutils-${elfutils_v}.tar.bz2" >> wget-list
 echo "https://github.com/eudev-project/eudev/releases/download/v${eudev_v}/eudev-${eudev_v}.tar.gz" >> wget-list
 echo "https://github.com/libexpat/libexpat/releases/download/${expat_git_v}/expat-${expat_v}.tar.xz" >> wget-list
@@ -26,6 +28,7 @@ echo "https://prdownloads.sourceforge.net/expect/expect${expect_v}.tar.gz" >> wg
 echo "https://astron.com/pub/file/file-${file_v}.tar.gz" >> wget-list
 echo "https://ftp.gnu.org/gnu/findutils/findutils-${findutils_v}.tar.xz" >> wget-list
 echo "https://github.com/westes/flex/releases/download/v${flex_v}/flex-${flex_v}.tar.gz" >> wget-list
+echo "https://downloads.sourceforge.net/freetype/freetype-${freetype_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/gawk/gawk-${gawk_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/gcc/gcc-${gcc_v}/gcc-${gcc_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/gdbm/gdbm-${gdbm_v}.tar.gz" >> wget-list
@@ -45,6 +48,7 @@ echo "https://www.kernel.org/pub/linux/utils/kbd/kbd-${kbd_v}.tar.xz" >> wget-li
 echo "https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${kmod_v}.tar.xz" >> wget-list
 echo "https://www.greenwoodsoftware.com/less/less-${less_v}.tar.gz" >> wget-list
 echo "https://www.linuxfromscratch.org/lfs/downloads/${lfs_v}/lfs-bootscripts-${lfs_bootscripts_v}.tar.xz" >> wget-list
+echo "https://downloads.sourceforge.net/libpng/libpng-${libpng_v}.tar.xz" >> wget-list
 echo "https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-${libcap_v}.tar.xz" >> wget-list
 echo "https://github.com/libffi/libffi/releases/download/v${libffi_v}/libffi-${libffi_v}.tar.gz" >> wget-list
 echo "https://download.savannah.gnu.org/releases/libpipeline/libpipeline-${libpipeline_v}.tar.gz" >> wget-list
@@ -54,6 +58,7 @@ echo "https://ftp.gnu.org/gnu/m4/m4-${m4_v}.tar.xz" >> wget-list
 echo "https://ftp.gnu.org/gnu/make/make-${make_v}.tar.gz" >> wget-list
 echo "https://download.savannah.gnu.org/releases/man-db/man-db-${mandb_v}.tar.xz" >> wget-list
 echo "https://www.kernel.org/pub/linux/docs/man-pages/man-pages-${man_pages_v}.tar.xz" >> wget-list
+echo "https://mandoc.bsd.lv/snapshots/mandoc-${mandoc_v}.tar.gz" >> wget-list
 echo "https://github.com/mesonbuild/meson/releases/download/${meson_v}/meson-${meson_v}.tar.gz" >> wget-list
 echo "https://ftp.gnu.org/gnu/mpc/mpc-${mpc_v}.tar.gz" >> wget-list
 echo "https://ftp.gnu.org/gnu/mpfr/mpfr-${mpfr_v}.tar.xz" >> wget-list
@@ -63,6 +68,7 @@ echo "https://www.openssl.org/source/openssl-${openssl_v}.tar.gz" >> wget-list
 echo "https://ftp.gnu.org/gnu/patch/patch-${patch_v}.tar.xz" >> wget-list
 echo "https://www.cpan.org/src/${perl_series_v}/perl-${perl_v}.tar.xz" >> wget-list
 echo "https://pkg-config.freedesktop.org/releases/pkg-config-${pkg_config_v}.tar.gz" >> wget-list
+echo "http://ftp.rpm.org/popt/releases/popt-${popt_m_v}.x/popt-${popt_v}.tar.gz" >> wget-list
 echo "https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-${procps_ng_v}.tar.xz" >> wget-list
 echo "https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-${psmisc_v}.tar.xz" >> wget-list
 echo "https://www.python.org/ftp/python/${python_v}/Python-${python_v}.tar.xz" >> wget-list
@@ -82,6 +88,7 @@ echo "https://unifoundry.com/pub/unifont/unifont-${unifont_v}/font-builds/unifon
 echo "https://www.kernel.org/pub/linux/utils/util-linux/v${util_linux_base_v}/util-linux-${util_linux_v}.tar.xz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/vim-${vim_v}.tar.gz" >> wget-list
 echo "https://anduin.linuxfromscratch.org/LFS/wheel-${wheel_v}.tar.gz" >> wget-list
+echo "https://ftp.gnu.org/gnu/which/which-${which_v}.tar.gz" >> wget-list
 echo "https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-${xml_parser_v}.tar.gz" >> wget-list
 echo "https://tukaani.org/xz/xz-${xz_v}.tar.xz" >> wget-list
 echo "https://zlib.net/zlib-${zlib_v}.tar.xz" >> wget-list
@@ -92,6 +99,7 @@ echo "https://www.linuxfromscratch.org/patches/lfs/11.2/glibc-2.36-fhs-1.patch" 
 echo "https://www.linuxfromscratch.org/patches/lfs/11.2/kbd-2.5.1-backspace-1.patch" >> wget-list
 echo "https://www.linuxfromscratch.org/patches/lfs/11.2/sysvinit-3.04-consolidated-1.patch" >> wget-list
 echo "https://www.linuxfromscratch.org/patches/lfs/11.2/zstd-1.5.2-upstream_fixes-1.patch" >> wget-list
+echo "https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.37-apng.patch.gz" >> wget-list
 
 wget --input-file=wget-list --continue
 exit 0
