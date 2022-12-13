@@ -45,7 +45,7 @@ online_usrlib="libbfd-2.39.so
                libncursesw.so.6.3
                libm.so.6
                libreadline.so.8.1
-               libz.so.1.2.12
+               libz.so.${zlib_v}
                $(cd /usr/lib; find libnss*.so* -type f)"
 
 for BIN in $online_usrbin; do
@@ -62,16 +62,16 @@ for LIB in $online_usrlib; do
     rm /tmp/$LIB
 done
 
-for i in $(find /usr/lib -type f -name \*.so* ! -name \*dbg) \
-         $(find /usr/lib -type f -name \*.a)                 \
-         $(find /usr/{bin,sbin,libexec} -type f); do
-    case "$online_usrbin $online_usrlib $save_usrlib" in
-        *$(basename $i)* )
-            ;;
-        * ) strip --strip-unneeded $i
-            ;;
-    esac
-done
+#for i in $(find /usr/lib -type f -name \*.so* ! -name \*dbg) \
+#         $(find /usr/lib -type f -name \*.a)                 \
+#         $(find /usr/{bin,sbin,libexec} -type f); do
+#    case "$online_usrbin $online_usrlib $save_usrlib" in
+#        *$(basename $i)* )
+#            ;;
+#        * ) strip --strip-unneeded $i
+#            ;;
+#    esac
+#done
 
 unset BIN LIB save_usrlib online_usrbin online_usrlib
 

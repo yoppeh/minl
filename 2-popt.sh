@@ -14,7 +14,7 @@ echo "building popt..."
 set -e
 
 tar xf popt-${popt_v}.tar.gz
-cd grub-${grub_v}
+cd popt-${popt_v}
 
 ./configure \
     --prefix=/usr \
