@@ -16,9 +16,15 @@ set -e
 tar xf check-${check_v}.tar.gz
 cd check-${check_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static
+    $disable_static 
 make
 make docdir=/usr/share/doc/check-${check_v} install
 

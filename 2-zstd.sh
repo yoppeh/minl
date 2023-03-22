@@ -16,12 +16,12 @@ set -e
 tar xf zstd-${zstd_v}.tar.gz
 cd zstd-${zstd_v}
 
-patch -Np1 -i ../zstd-1.5.2-upstream_fixes-1.patch
-
 make prefix=/usr
 make prefix=/usr install
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
 rm /usr/lib/libzstd.a
+fi
 
 cd ..
 rm -rf zstd-${zstd_v}

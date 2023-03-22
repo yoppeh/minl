@@ -16,10 +16,16 @@ set -e
 tar xf attr-${attr_v}.tar.gz
 cd attr-${attr_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
     --sysconfdir=/etc \
+    $disable_static \
     --docdir=/usr/share/doc/attr-${attr_v}
 make
 make install

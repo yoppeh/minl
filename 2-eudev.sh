@@ -20,8 +20,10 @@ cd eudev-${eudev_v}
     --prefix=/usr \
     --bindir=/usr/sbin \
     --sysconfdir=/etc \
-    --enable-manpages \
-    --disable-static
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+    --disable-static \
+fi
+    --enable-manpages
 make
 mkdir -p /usr/lib/udev/rules.d
 mkdir -p /etc/udev/rules.d

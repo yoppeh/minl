@@ -17,10 +17,16 @@ rm -rf gmp-${gmp_v}
 tar xf gmp-${gmp_v}.tar.xz
 cd gmp-${gmp_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
     --enable-cxx \
-    --disable-static \
+    $disable_static \
     --docdir=/usr/share/doc/gmp-${gmp_v}
 make
 make install

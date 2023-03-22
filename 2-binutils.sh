@@ -31,7 +31,10 @@ cd build
     --with-system-zlib
 make tooldir=/usr
 make tooldir=/usr install
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
 rm -f /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a
+fi
+rm -f /usr/share/man/man1/{gprofng,gp-*}.1
 
 cd ../..
 rm -rf binutils-${binutils_v}

@@ -19,11 +19,19 @@ cd readline-${readline_v}
 sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSTUFF}/c:' support/shlib-install
 
+patch -Np1 -i ../readline-${readline_v}-upstream_fix-1.patch
+
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
+    $disable_static \
     --with-curses \
-    --docdir=/usr/share/doc/readline-${readline_v}
+    --docdir=/usr/share/doc/readline-${readline_v} 
 make SHLIB_LIBS="-lncursesw"
 make SHLIB_LIBS="-lncursesw" install
 

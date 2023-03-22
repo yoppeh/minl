@@ -15,7 +15,7 @@ echo "2022-12-01" > /etc/minl-release
 
 cat > /etc/lsb-release << "EOF"
 DISTRIB_ID="minl"
-DISTRIB_RELEASE="2022-12-01"
+DISTRIB_RELEASE="2023-03-18"
 DISTRIB_CODENAME=""
 DISTRIB_DESCRIPTION="minimal linux"
 EOF
@@ -40,11 +40,11 @@ for LIB in $save_usrlib; do
 done
 
 online_usrbin="bash find strip"
-online_usrlib="libbfd-2.39.so
-               libhistory.so.8.1
-               libncursesw.so.6.3
+online_usrlib="libbfd-2.40.so
+               libhistory.so.8.2
+               libncursesw.so.6.4
                libm.so.6
-               libreadline.so.8.1
+               libreadline.so.8.2
                libz.so.${zlib_v}
                $(cd /usr/lib; find libnss*.so* -type f)"
 

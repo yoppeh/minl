@@ -14,6 +14,8 @@ set -e
 cd /sources
 tar xf linux-${linux_v}.tar.xz
 chown -R 0:0 linux-${linux_v}
+cp -R linux-${linux_v} /usr/src
+ln -s /usr/src/linux-${linux_v} /usr/src/linux
 cd linux-${linux_v}
 
 make mrproper

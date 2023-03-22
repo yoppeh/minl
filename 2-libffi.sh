@@ -16,11 +16,16 @@ set -e
 tar xf libffi-${libffi_v}.tar.gz
 cd libffi-${libffi_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
-    --with-gcc-arch=native \
-    --disable-exec-static-tramp
+    $disable_static \
+    --with-gcc-arch=native
 make
 make install
 

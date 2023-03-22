@@ -16,10 +16,16 @@ set -e
 tar xf xz-${xz_v}.tar.xz
 cd xz-${xz_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
-    --docdir=/usr/share/doc/xz-${xz_v}
+    --docdir=/usr/share/doc/xz-${xz_v} \
+    $disable_static
 make
 make install
 

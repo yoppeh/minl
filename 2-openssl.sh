@@ -20,7 +20,7 @@ cd openssl-${openssl_v}
 ./config \
     --prefix=/usr \
     --openssldir=/etc/ssl \
-    --libdir=/lib \
+    --libdir=lib \
     shared \
     zlib-dynamic
 make

@@ -14,7 +14,9 @@ echo "cleaning up..."
 set -e
 
 rm -rf /usr/share/{info,man,doc}/*
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
 find /usr/{lib,libexec} -name \*.la -delete
+fi
 rm -rf /tools
 
 touch $PROGRESS_DIR/2-cleanup

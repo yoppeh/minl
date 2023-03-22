@@ -24,8 +24,10 @@ sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
 ./configure \
 	--prefix=/usr \
 	--enable-freetype-config \
-	--without-harfbuzz \
-	--disable-static
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+	--disable-static \
+fi
+	--without-harfbuzz 
 make
 make install
 

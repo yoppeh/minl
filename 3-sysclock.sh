@@ -11,9 +11,10 @@ echo "configuring system clock..."
 
 set -e
 
-cat > /etc/sysconfig/clock << "EOF"
-UTC=1
-CLOCKPARAMS=
+cat > /etc/adjtime << "EOF"
+0.0 0 0.0
+0
+UTC
 EOF
 
 touch $PROGRESS_DIR/3-sysclock

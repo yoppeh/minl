@@ -19,7 +19,7 @@ cd gawk-${gawk_v}
 sed -i 's/extras//' Makefile.in
 ./configure --prefix=/usr
 make
-make install
+make LN='ln -f' install
 
 cd ..
 rm -rf gawk-${gawk_v}

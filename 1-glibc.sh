@@ -28,7 +28,7 @@ case $(uname -m) in
         ;;
 esac
 
-patch -Np1 -i ../glibc-2.36-fhs-1.patch
+patch -Np1 -i ../glibc-2.37-fhs-1.patch
 
 mkdir build
 cd build
@@ -39,13 +39,13 @@ echo "rootsbindir=/usr/sbin" > configparms
     --prefix=/usr \
     --host=$MINL_TGT \
     --build=$(../scripts/config.guess) \
-    --enable-kernel=3.2 \
+    --enable-kernel=${linux_mm_v} \
     --with-headers=$MINL/usr/include \
     libc_cv_slibdir=/usr/lib
 
 make -j1
 make DESTDIR=$MINL install
-sed 'RTLDIST=/s@/usr@@g' -i $MINL/usr/bin/ldd
+sed 'RTLDLIST=/s@/usr@@g' -i $MINL/usr/bin/ldd
 
 $MINL/tools/libexec/gcc/$MINL_TGT/${gcc_v}/install-tools/mkheaders
 

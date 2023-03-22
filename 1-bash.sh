@@ -20,7 +20,7 @@ cd bash-${bash_v}
 
 ./configure \
     --prefix=/usr \
-    --build=$(support/config.guess) \
+    --build=$(sh support/config.guess) \
     --host=$MINL_TGT \
     --without-bash-malloc
 make

@@ -16,19 +16,22 @@ set -e
 ./2-filesystem.sh
 PASS=1 ./2-gettext.sh
 ./2-bison.sh
-./2-zlib.sh
 ./2-bzip2.sh
-./2-perl.sh
+./2-zlib.sh
+PASS=1 ./2-perl.sh
 PASS=1 ./2-python.sh
 PASS=1 ./2-texinfo.sh
 PASS=1 ./2-util-linux.sh
 
 ./2-cleanup.sh
 
+export CFLAGS=$COMPILE_FLAGS
+export CXXFLAGS=$COMPILE_FLAGS
+
 ./2-man-pages.sh
 ./2-iana-etc.sh
 
-ldconfig -v
+#ldconfig -v
 
 ./2-glibc.sh
 ./2-xz.sh
@@ -64,7 +67,7 @@ PASS=2 ./2-gettext.sh
 ./2-expat.sh
 ./2-inetutils.sh
 ./2-less.sh
-./2-perl.sh
+PASS=2./2-perl.sh
 ./2-xml-parser.sh
 ./2-intltool.sh
 ./2-autoconf.sh
@@ -73,7 +76,7 @@ PASS=2 ./2-gettext.sh
 ./2-kmod.sh
 ./2-libelf.sh
 ./2-libffi.sh
-ldconfig -v
+#ldconfig -v
 PASS=2 ./2-python.sh
 ./2-wheel.sh
 ./2-ninja.sh
@@ -84,17 +87,6 @@ PASS=2 ./2-python.sh
 ./2-gawk.sh
 ./2-findutils.sh
 ./2-groff.sh
-
-./2-mandoc.sh
-./2-efivar.sh
-./2-popt.sh
-./2-efibootmgr.sh
-./2-libpng.sh
-./2-which.sh
-./2-freetype.sh
-./2-unifont.sh
-./2-grub.sh
-
 ./2-gzip.sh
 ./2-iproute.sh
 ./2-kbd.sh
@@ -104,12 +96,13 @@ PASS=2 ./2-python.sh
 ./2-tar.sh
 PASS=2 ./2-texinfo.sh
 ./2-vim.sh
-./2-eudev.sh
+./2-markupsafe.sh
+./2-jinja.sh
+./2-systemd.sh
+./2-dbus.sh
 ./2-mandb.sh
 ./2-procps.sh
 PASS=2 ./2-util-linux.sh
 ./2-e2fsprogs.sh
-./2-sysklogd.sh
-./2-sysvinit.sh
-./2-dhcpcd.sh
+./2-which.sh
 ./2-kernel.sh

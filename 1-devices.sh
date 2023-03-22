@@ -20,6 +20,8 @@ mount -t tmpfs tmpfs $MINL/run
 
 if [ -h $MINL/dev/shm ] ; then
 	mkdir -p $MINL/$(readlink $MINL/dev/shm)
+else
+    mount -t tmpfs -o nosuid,nodev tmpfs $MINL/dev/shm
 fi
 
 touch $PROGRESS_DIR/1-devices

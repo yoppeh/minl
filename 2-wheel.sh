@@ -16,7 +16,8 @@ set -e
 tar xf wheel-${wheel_v}.tar.gz
 cd wheel-${wheel_v}
 
-pip3 install --no-index $PWD
+PYTHONPATH=src pip3 wheel -w dist --no-build-isolation --no-deps $PWD
+pip3 install --no-index --find-links=dist wheel
 
 cd ..
 rm -rf wheel-${wheel_v}

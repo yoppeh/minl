@@ -23,7 +23,7 @@ cd xz-${xz_v}
     --host=$MINL_TGT \
     --build=$(build_aux/config.guess) \
     --disable-static \
-    --docdir=/usr/share/doc/xz-5.2.6
+    --docdir=/usr/share/doc/xz-${xz_v}
 make
 make DESTDIR=$MINL install
 rm $MINL/usr/lib/liblzma.la

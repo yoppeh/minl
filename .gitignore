@@ -2,4 +2,5 @@
 *.gz
 *.bz2
 *.patch
+environment.sh
 wget-list

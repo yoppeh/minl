@@ -17,9 +17,15 @@ rm -rf mpc-${mpc_v}
 tar xf mpc-${mpc_v}.tar.gz
 cd mpc-${mpc_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
+	$disable_static \
     --docdir=/usr/share/doc/mpc-${mpc_v}
 make
 make install

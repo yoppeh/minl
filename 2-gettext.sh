@@ -16,13 +16,19 @@ set -e
 tar xf gettext-${gettext_v}.tar.xz
 cd gettext-${gettext_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 if [ "$PASS" == "1" ] ; then
     ./configure --disable-shared
 else 
     ./configure \
         --prefix=/usr \
-        --disable-static \
-        --docdir=/usr/share/doc/gettext-${gettext_v}
+        --docdir=/usr/share/doc/gettext-${gettext_v} \
+        ${disable_static}
 fi
 make
 if [ "$PASS" == "1" ] ; then

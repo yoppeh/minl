@@ -15,9 +15,15 @@ set -e
 
 tar xf util-linux-${util_linux_v}.tar.xz
 cd util-linux-${util_linux_v}
-mkdir -p /var/lib/hwclock
+
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
 
 if [ "$PASS" == "1" ] ; then
+    mkdir -p /var/lib/hwclock
     ./configure \
         ADJTIME_PATH=/var/lib/hwclock/adjtime \
         --libdir=/usr/lib \
@@ -46,10 +52,8 @@ else
         --disable-setpriv \
         --disable-runuser \
         --disable-pylibmount \
-        --disable-static \
         --without-python \
-        --without-systemd \
-        --without-systemdsystemunitdir
+        ${disable_static}
 fi
 make
 make install

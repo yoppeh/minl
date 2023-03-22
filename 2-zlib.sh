@@ -19,7 +19,9 @@ cd zlib-${zlib_v}
 ./configure --prefix=/usr
 make
 make install
-rm /usr/lib/libz.a
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+rm -f /usr/lib/libz.a
+fi
 
 cd ..
 rm -rf zlib-${zlib_v}

@@ -38,5 +38,6 @@ PASS=1 ./1-gcc.sh
 ./1-xz.sh
 PASS=2 ./1-binutils.sh
 PASS=2 ./1-gcc.sh
+./1-owner.sh
 ./1-devices.sh
 ./1-chroot.sh

@@ -28,9 +28,13 @@ cd build
     --disable-fsck
 make
 make install
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
 rm -f /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
+fi
 gunzip /usr/share/info/libext2fs.info.gz
 install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
+
+sed 's/metadata_csum_seed,//' -i /etc/mke2fs.conf
 
 cd ../..
 rm -rf e2fsprogs-${e2fsprogs_v}

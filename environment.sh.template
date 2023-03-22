@@ -1,17 +1,54 @@
-
 # Set this block of variables according to your system
-# TARGET_DEV is the device name of the disk you are installing to. For example: /dev/sdb
-# BOOT_PARTITION is the partition # of the boot partition you are installing to. For example: 1
-# ROOT_PARTITION is the partition # of the root partition you are installing to. For example: 2
-# SWAP_PARTITION is the partition # of the swap partition you will be using. This can be blank. For example: 3
-# KERNEL_CONFIG is the name of one of the kernel-config.xxxxxxxxx files in the minl repo. For example: kernel-config.virtualbox for a virtualbox vm kernel.
-# TIMEZONE is the timezone string you want. For example: "America/Chicago"
+#
+# KEEP_STATIC_LIBS
+#   If 1, then static versions of libraries will be installed.
+#   If 0, then static versions of libraries will not be installed.
+# TARGET_DEV 
+#   The device name of the disk you are installing to. For example: /dev/sdb
+# BOOT_PARTITION
+#   The partition # of the boot partition you are installing to. For example: 1
+# ROOT_PARTITION
+#   The partition # of the root partition you are installing to. For example: 2
+# SWAP_PARTITION 
+#   is the partition # of the swap partition you will be using. This can be 
+#   blank. For example: 3
+# KERNEL_CONFIG 
+#   The name of one of the kernel-config.xxxxxxxxx files in the minl repo. For 
+#   example: kernel-config.virtualbox for a virtualbox vm kernel.
+# TIMEZONE
+#   The timezone string you want. For example: "America/Chicago"
+# COMPILE_FLAGS
+#   Flags that will be passed on to the c/c++ compiler _after_ stage 1 is 
+#   complete.
+# FMT_ROOT, FMT_BOOT and FMT_SWAP 
+#   Specify whether to format the root, boot and swap partitions. Set to 1 to 
+#   enable formatting, 0 to disable. If you are installing to a dual-boot
+#   system, you probably already have a distro using boot and swap and wouldn't
+#   want to format them. These install scripts will detect an installed boot 
+#   manager and add this minl installation to it.
+# ETH_DEV
+#   Specifies the ethernet device to use for configuring the network, "eth0",
+#   for example.
+# WLAN_DEV
+#   Specifies the wireless device to use for configuring the network, "wlan0",
+#   for example.
+# SYS_NAME
+#	Name to give the system, used in things like the build target and kernel
+#	filename.
+export KEEP_STATIC_LIBS=0
 export TARGET_DEV=
 export ROOT_PARTITION=
 export BOOT_PARTITION=
 export SWAP_PARTITION=
 export KERNEL_CONFIG=
 export TIMEZONE=
+export COMPILE_FLAGS=
+export FMT_ROOT="0"
+export FMT_BOOT="0"
+export FMT_SWAP="0"
+export ETH_DEV=eth0
+export WIFI_DEV=wlan0
+export SYS_NAME=minl
 
 # The remainder can be left alone
 set +h
@@ -22,7 +59,7 @@ export BOOT_DEV=${TARGET_DEV}${BOOT_PARTITION}
 fi
 export ROOT_DEV=${TARGET_DEV}${ROOT_PARTITION}
 export SWAP_DEV=${TARGET_DEV}${SWAP_PARTITION}
-export MINL=/mnt/minl
+export MINL=/mnt/${SYS_NAME}
 export LC_ALL=POSIX
 export CONFIG_SITE=$MINL/usr/share/config.site
 export PROGRESS_DIR=$MINL/progress
@@ -36,6 +73,6 @@ case $(uname -m) in
 	x86)
 		;&
 	x86_64)
-		export MINL_TGT=$(uname -m)-minl-linux-gnu
-		;;
+		export MINL_TGT=$(uname -m)-${SYS_NAME}-linux-gnu
+	;;
 esac

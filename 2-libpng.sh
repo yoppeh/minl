@@ -19,8 +19,10 @@ cd libpng-${libpng_v}
 gzip -cd ../libpng-1.6.37-apng.patch.gz | patch -p1
 
 ./configure \
-	--prefix=/usr \
-	--disable-static
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+	--disable-static \
+fi
+	--prefix=/usr
 make
 make install
 mkdir /usr/share/doc/libpng-${libpng_v}

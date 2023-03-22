@@ -11,28 +11,37 @@ echo "configuring network..."
 
 set -e
 
-cat > /etc/sysconfig/ifconfig.eth0 << "EOF"
-ONBOOT=yes
-IFACE=eth0
-# uncomment these for a static ip
-#SERVICE=ipv4-static
-#IP=192.168.1.9
-#GATEWAY=192.168.1.1
-#PREFIX=24
-#BROADCAST=192.168.1.255
-# comment these out for a static ip
-SERVICE="dhcpcd"
+cat > /etc/systemd/network/10-eth-dhcp.network << EOF
+[Match]
+Name=${ETH_DEV}
+
+[Network]
+DHCP=ipv4
+
+[DHCPv4]
+UseDomains=true
 EOF
 
-cat > /etc/resolv.conf.head << "EOF"
+cat > /etc/systemd/network/20-wifi-dhcp.network << EOF
+[Match]
+Name=${WLAN_DEV}
+
+[Network]
+DHCP=ipv4
+
+[DHCPv4]
+UseDomains=true
+EOF
+
+cat > /etc/resolv.conf << "EOF"
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 
-echo "minl" > /etc/hostname
+echo "${HOSTNAME}" > /etc/hostname
 
 cat > /etc/hosts << "EOF"
-127.0.0.1 localhost
+127.0.0.1 localhost ${HOSTNAME}
 EOF
 
 touch $PROGRESS_DIR/3-network

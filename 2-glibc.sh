@@ -15,7 +15,8 @@ set -e
 
 tar xf glibc-${glibc_v}.tar.xz
 cd glibc-${glibc_v}
-patch -Np1 -i ../glibc-2.36-fhs-1.patch
+patch -Np1 -i ../glibc-${glibc_v}-fhs-1.patch
+sed '/width -=/s/workend - string/number_length/' -i stdio-common/vfprintf-process-arg.c
 mkdir build
 cd build
 echo "rootsbindir=/usr/sbin" > configparms
@@ -23,7 +24,7 @@ echo "rootsbindir=/usr/sbin" > configparms
 ../configure \
     --prefix=/usr \
     --disable-werror \
-    --enable-kernel=3.2 \
+    --enable-kernel=${linux_mm_v} \
     --enable-stack-protector=strong \
     --with-headers=/usr/include \
     libc_cv_slibdir=/usr/lib
@@ -34,6 +35,9 @@ make install
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
 cp -v ../nscd/nscd.conf /etc/nscd.conf
 mkdir -p /var/cache/nscd 
+
+install -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
+install -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service
 
 mkdir -p /usr/lib/locale
 localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
@@ -100,7 +104,7 @@ for tz in etcetera southamerica northamerica europe africa antarctica asia austr
     zic -L leapseconds -d $ZONEINFO/right ${tz}
 done
 cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
-zic -d $ZONEINFO -p America/New_York
+zic -d $ZONEINFO -p $TIMEZONE
 unset ZONEINFO
 ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 

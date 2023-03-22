@@ -19,7 +19,7 @@ cd diffutils-${diffutils_v}
 ./configure \
     --prefix=/usr 
 make
-make  install
+make install
 
 cd ..
 rm -rf diffutils-${diffutils_v}

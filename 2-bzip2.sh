@@ -33,7 +33,9 @@ for i in /usr/bin/{bzcat,bunzip2} ; do
     ln -sf bzip2 $i
 done
 
+if [ "$KEEP_STATIC_LIBS" -eq "0" ] ; then
 rm -f /usr/lib/libbz2.a
+fi
 
 cd ..
 rm -rf bzip2-${bzip2_v}

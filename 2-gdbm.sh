@@ -16,9 +16,15 @@ set -e
 tar xf gdbm-${gdbm_v}.tar.gz
 cd gdbm-${gdbm_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
+    $disable_static \
     --enable-libgdbm-compat
 make
 make install

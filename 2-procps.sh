@@ -16,11 +16,18 @@ set -e
 tar xf procps-ng-${procps_ng_v}.tar.xz
 cd procps-ng-${procps_ng_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi 
+
 ./configure \
     --prefix=/usr \
     --docdir=/usr/share/doc/procps-ng-${procps_ng_v} \
-    --disable-static \
-    --disable-kill
+    --disable-kill \
+    $disable_static \
+    --with-systemd
 make
 make install
 

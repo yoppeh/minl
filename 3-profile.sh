@@ -11,8 +11,12 @@ echo "configuring bash profile..."
 
 set -e
 
-cat > /etc/profile << "EOF"
-export LANG="en_US.iso88591"
+cat > /etc/vconsole << "EOF"
+KEYMAP=${KEYMAP}
+EOF
+
+cat > /etc/locale.conf << "EOF"
+LANG=${LOCALE}
 EOF
 
 touch $PROGRESS_DIR/3-profile

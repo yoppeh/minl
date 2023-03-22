@@ -32,7 +32,7 @@ if [ "$PASS" == "1" ] ; then
         --target=$MINL_TGT \
         --disable-nls \
         --disable-werror \
-        --enable-gprofgn=no
+        --enable-gprofng=no
 else
     ../configure \
         --prefix=/usr \

@@ -45,10 +45,11 @@ if [ "$PASS" == "1" ] ; then
         --with-sysroot=$MINL \
         --with-newlib \
         --without-headers \
+        --enable-default-pie \
+        --enable-default-ssp \
         --disable-nls \
         --disable-shared \
         --disable-multilib \
-        --disable-decimal-float \
         --disable-threads \
         --disable-libatomic \
         --disable-libgomp \
@@ -65,10 +66,10 @@ else
         LDFLAGS_FOR_TARGET=-L$PWD/$MINL_TGT/libgcc \
         --prefix=/usr \
         --with-build-sysroot=$MINL \
-        --enable-initfini-array \
+        --enable-default-pie \
+        --enable-default-ssp \
         --disable-nls \
         --disable-multilib \
-        --disable-decimal-float \
         --disable-libatomic \
         --disable-libgomp \
         --disable-libquadmath \

@@ -11,15 +11,14 @@
 
 set -e
 
-./3-bootscripts.sh
+export CFLAGS=$COMPILE_FLAGS
+export CXXFLAGS=$COMPILE_FLAGS
+
 ./3-network.sh
-./3-inittab.sh
 ./3-sysclock.sh
-./3-rc-site.sh
 ./3-profile.sh
 ./3-inputrc.sh
 ./3-shells.sh
 ./3-fstab.sh
 #./3-bootloader.sh
-./3-blfs-bootscripts.sh
 ./3-finish.sh

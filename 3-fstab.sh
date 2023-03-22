@@ -17,6 +17,7 @@ cat > /etc/fstab << EOF
 # file system  mount-point  type     options             dump  fsck
 #                                                              order
 
+$BOOT_DEV      /boot        vfat    rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 2
 $ROOT_DEV      /            ext4     defaults            1     1
 $SWAP_DEV      swap         swap     pri=1               0     0
 proc           /proc        proc     nosuid,noexec,nodev 0     0

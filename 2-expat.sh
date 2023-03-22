@@ -16,9 +16,15 @@ set -e
 tar xf expat-${expat_v}.tar.xz
 cd expat-${expat_v}
 
+if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
+disable_static="--disable-static"
+else
+disable_static=""
+fi
+
 ./configure \
     --prefix=/usr \
-    --disable-static \
+    $disable_static \
     --docdir=/usr/share/doc/expat-${expat_v}
 make
 make install
