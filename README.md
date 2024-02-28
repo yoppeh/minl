@@ -1,9 +1,13 @@
 # minl
+
 Scripted build of a minimal linux system based on [Linux From Scratch](http://www.linuxfromscratch.org).
 
 These scripts must be run as root. If you want to work out some way to run as a regular user, check out environment.sh, 1-01-filesystem.sh and 2-01-filesystem.sh. This should be buildable from any modern host system with a dev-tools package installed. I use Arch Linux.
 
+I don't want to take credit for this distribution procedure: that is pretty much Linux From Scratch and I had nothing to do with building it. All that I have done here is to put those instructions into Bash scripts to execute the instructions in the book with only minimal intervention from the user.
+
 ## Procedure
+
 - `su -`
 - Make sure the minl repo is in /root
 - `cd /root/minl`
