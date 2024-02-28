@@ -12,7 +12,7 @@ I don't want to take credit for this distribution procedure: that is pretty much
 - Make sure the minl repo is in /root
 - `cd /root/minl`
 - Choose a device to install to: USB stick, external USB drive, internal hard drive, whatever.
-- Run `fdisk /dev/xxxx`. My USB stick gets recognized as /dev/sda, so I run `fdisk /dev/sda` and create a 512MB boot partition type EF00, 110GB root partition, type 8200, then create a 2GB swap partition with type 8000. `w` to write the changes and exit fdisk.
+- Run `fdisk /dev/xxxx`. My USB stick gets recognized as /dev/sda, so I run `fdisk /dev/sda` and create a 512MB boot partition type EF, 110GB root partition, type 82, then create a 2GB swap partition with type 83. `w` to write the changes and exit fdisk.
 - Run `cp environment.sh.template environment.sh`
 - Check environment.sh and set the variables appropriately. The swap partition is optional, you can leave it blank with `SWAP_DEV=`. In my case above: `TARGET_DEV=/dev/sda`, `BOOT_PARTITION=1`, `ROOT_PARTITION=2`, `SWAP_PARTITION=3`. Set the KERNEL_CONFIG appropriately. For example, if you're doing this in a VirtualBox VM, you could set `KERNEL_CONFIG=kernel-config.virtualbox`. Set TIMEZONE to your desired timezone. Example: `TIMEZONE=America/Chicago`
 - Run `./get-sources.sh`
