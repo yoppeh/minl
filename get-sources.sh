@@ -87,7 +87,7 @@ echo "https://pypi.org/packages/source/w/wheel/wheel-${wheel_v}.tar.gz" >> wget-
 echo "https://ftp.gnu.org/gnu/which/which-${which_v}.tar.gz" >> wget-list
 echo "https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-${xml_parser_v}.tar.gz" >> wget-list
 echo "https://tukaani.org/xz/xz-${xz_v}.tar.xz" >> wget-list
-echo "https://zlib.net/zlib-${zlib_v}.tar.xz" >> wget-list
+echo "https://github.com/madler/zlib/releases/download/v${zlib_v}/zlib-${zlib_v}.tar.xz" >> wget-list
 echo "https://github.com/facebook/zstd/releases/download/v${zstd_v}/zstd-${zstd_v}.tar.gz" >> wget-list
 echo "https://www.linuxfromscratch.org/patches/lfs/11.3/bzip2-${bzip2_v}-install_docs-1.patch" >> wget-list
 echo "https://www.linuxfromscratch.org/patches/lfs/11.3/coreutils-${coreutils_v}-i18n-1.patch" >> wget-list
