@@ -6,6 +6,8 @@
 
 [ -z "$MINLENV" ] && exec env -i MINLENV=1 /bin/bash "$0"
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 

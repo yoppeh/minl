@@ -1,10 +1,14 @@
 # Set this block of variables according to your system
 #
-# KEEP_STATIC_LIBS
-#   If 1, then static versions of libraries will be installed.
-#   If 0, then static versions of libraries will not be installed.
-# TARGET_DEV 
-#   The device name of the disk you are installing to. For example: /dev/sdb
+# TARGET_DEV_BOOT
+#   The device name of the disk you are installing the boot partition to. For 
+# 	example: /dev/sdb
+# TARGET_DEV_ROOT
+#   The device name of the disk you are installing the root partition to. For 
+# 	example: /dev/sdb
+# TARGET_DEV_SWAP
+#   The device name of the disk you are installing the swap partition to. For 
+# 	example: /dev/sdb
 # BOOT_PARTITION
 #   The partition # of the boot partition you are installing to. For example: 1
 # ROOT_PARTITION
@@ -35,8 +39,15 @@
 # SYS_NAME
 #	Name to give the system, used in things like the build target and kernel
 #	filename.
-export KEEP_STATIC_LIBS=0
-export TARGET_DEV=
+# MAKEFLAGS
+#	Specified flags to pass to make. set the -j4 to the number of parallel
+#   builds you want to allow make to run.
+# ROOT_PASSWORD
+#   The initial root password for the installed system.
+
+export TARGET_DEV_BOOT=
+export TARGET_DEV_ROOT=
+export TARGET_DEV_SWAP=
 export ROOT_PARTITION=
 export BOOT_PARTITION=
 export SWAP_PARTITION=
@@ -49,20 +60,29 @@ export FMT_SWAP="0"
 export ETH_DEV=eth0
 export WIFI_DEV=wlan0
 export SYS_NAME=minl
+export MAKEFLAGS=-j4
+export ROOT_PASSWORD=
 
 # The remainder can be left alone
 set +h
 umask 022
 
-if [ "$BOOT_PARTITION" != "" ] ; then
-export BOOT_DEV=${TARGET_DEV}${BOOT_PARTITION}
+if [ "$BOOT_PARTITION" ~= "" ] ; then
+export BOOT_DEV=${TARGET_DEV_BOOT}${BOOT_PARTITION}
+else
+export BOOT_DEV=""
 fi
-export ROOT_DEV=${TARGET_DEV}${ROOT_PARTITION}
-export SWAP_DEV=${TARGET_DEV}${SWAP_PARTITION}
+export ROOT_DEV=${TARGET_DEV_ROOT}${ROOT_PARTITION}
+export SWAP_DEV=${TARGET_DEV_SWAP}${SWAP_PARTITION}
 export MINL=/mnt/${SYS_NAME}
 export LC_ALL=POSIX
 export CONFIG_SITE=$MINL/usr/share/config.site
-export PROGRESS_DIR=$MINL/progress
+if [ -d /progress ] ; then
+    export PROGRESS_DIR=/progress
+else
+    export PROGRESS_DIR=$MINL/progress
+fi
+export LFS_VER=12.1
 
 PATH=/usr/bin:/usr/sbin
 if [ ! -L /bin ] ; then PATH=/bin:$PATH ; fi
@@ -70,9 +90,16 @@ if [ ! -L /sbin ] ; then PATH=/sbin:$PATH ; fi
 export PATH=$MINL/tools/bin:$PATH
 
 case $(uname -m) in
-	x86)
-		;&
-	x86_64)
-		export MINL_TGT=$(uname -m)-${SYS_NAME}-linux-gnu
-	;;
+    x86)
+        ;&
+    x86_64)
+        export MINL_TGT=$(uname -m)-${SYS_NAME}-linux-gnu
+    ;;
 esac
+
+if [ "$STAGE" == "3" ] ; then
+    export HOME=/root
+    export TERM=/bin/bash
+    export PS1='\u:\w\$ '
+    export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+fi

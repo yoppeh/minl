@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/1-tar ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building tar..."
@@ -21,7 +23,7 @@ cd tar-${tar_v}
 ./configure \
     --prefix=/usr \
     --host=$MINL_TGT \
-    --build=$(build-aux/config.guess)
+    --build=$(build-aux/config.guess) 
 make
 make DESTDIR=$MINL install
 

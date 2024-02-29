@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-groff ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building groff..."

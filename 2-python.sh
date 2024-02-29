@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-python-$PASS ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building python pass ${PASS}..."
@@ -26,7 +28,6 @@ else
         --prefix=/usr \
         --enable-shared \
         --with-system-expat \
-        --with-system-ffi \
         --enable-optimizations
 fi
 make

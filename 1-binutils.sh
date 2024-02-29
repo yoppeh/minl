@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/1-binutils-$PASS ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building binutils pass $PASS..."
@@ -32,7 +34,8 @@ if [ "$PASS" == "1" ] ; then
         --target=$MINL_TGT \
         --disable-nls \
         --disable-werror \
-        --enable-gprofng=no
+        --enable-gprofng=no \
+        --enable-default-hash-style=gnu
 else
     ../configure \
         --prefix=/usr \
@@ -42,7 +45,8 @@ else
         --enable-shared \
         --enable-gprofng=no \
         --disable-werror \
-        --enable-64-bit-bfd
+        --enable-64-bit-bfd \
+        --enable-default-hash-style=gnu
 fi
 make
 
@@ -50,7 +54,7 @@ if [ "$PASS" == "1" ] ; then
     make install
 else
     make DESTDIR=$MINL install
-    rm $MINL/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
+    rm $MINL/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
 fi
 
 cd $MINL/sources

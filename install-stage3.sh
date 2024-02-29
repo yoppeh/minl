@@ -6,6 +6,8 @@
 
 [ -z "$MINLENV" ] && exec env -i MINLENV=1 /bin/bash "$0"
 
+export STAGE=3
+
 . ./environment.sh
 . ./package-versions.sh
 
@@ -20,5 +22,5 @@ export CXXFLAGS=$COMPILE_FLAGS
 ./3-inputrc.sh
 ./3-shells.sh
 ./3-fstab.sh
-#./3-bootloader.sh
+./3-bootloader.sh
 ./3-finish.sh

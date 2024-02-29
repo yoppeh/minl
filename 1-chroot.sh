@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 
@@ -10,6 +12,8 @@ set -e
 chroot "$MINL" /usr/bin/env -i \
     HOME=/root \
     TERM="$TERM" \
-    PS1='(minl chroot) \u:\w\$ ' \
+    PS1='(${SYS_NAME} chroot) \u:\w\$ ' \
     PATH=/usr/bin:/usr/sbin \
+    MAKEFLAGS=$MAKEFLAGS \
+    TESTSUITEFLAGS=$MAKEFLAGS \
     /bin/bash --login

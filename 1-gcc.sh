@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/1-gcc-$PASS ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building gcc pass $PASS..."
@@ -25,9 +27,9 @@ tar xf ../mpc-${mpc_v}.tar.gz
 mv mpc-${mpc_v} mpc
 
 case $(uname -m) in
-	x86_64)
-		sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
-		;;
+    x86_64)
+        sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+        ;;
 esac
 
 if [ "$PASS" == "2" ] ; then
@@ -73,6 +75,7 @@ else
         --disable-libatomic \
         --disable-libgomp \
         --disable-libquadmath \
+        --disable-libsanitizer \
         --disable-libssp \
         --disable-libvtv \
         --enable-languages=c,c++
@@ -81,10 +84,10 @@ make
 if [ "$PASS" == "1" ] ; then
     make install
     cd ..
-    cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $($MINL_TGT-gcc -print-libgcc-file-name)`/install-tools/include/limits.h
+    cat gcc/limitx.h gcc/glimits.h gcc/limity.h > `dirname $($MINL_TGT-gcc -print-libgcc-file-name)`/include/limits.h
 else
     make DESTDIR=$MINL install
-	ln -s gcc $MINL/usr/bin/cc
+    ln -s gcc $MINL/usr/bin/cc
 fi
 
 cd $MINL/sources

@@ -1,32 +1,34 @@
 #!/bin/bash
 
+export STAGE=3
+
 . ./environment.sh
 . ./package-versions.sh
 
 if [ -f $PROGRESS_DIR/3-finish ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "finishing up..."
 
 set -e
 
-echo "2022-12-01" > /etc/minl-release
+echo "2024-02-29" > /etc/${SYS_NAME}-release
 
 cat > /etc/lsb-release << "EOF"
-DISTRIB_ID="minl"
-DISTRIB_RELEASE="2023-03-18"
+DISTRIB_ID=${SYS_NAME}
+DISTRIB_RELEASE="2024-02-29"
 DISTRIB_CODENAME=""
 DISTRIB_DESCRIPTION="minimal linux"
 EOF
 
 save_usrlib="$(cd /usr/lib; ls ld-linux*[^g])
-             libc.so.6
-             libthread_db.so.1
-             libquadmath.so.0.0.0
-             libstdc++.so.6.0.30
-             libitm.so.1.0.0
-             libatomic.so.1.2.0"
+    libc.so.6
+    libthread_db.so.1
+    libquadmath.so.0.0.0
+    libstdc++.so.6.0.30
+    libitm.so.1.0.0
+    libatomic.so.1.2.0"
 
 cd /usr/lib
 
@@ -41,12 +43,12 @@ done
 
 online_usrbin="bash find strip"
 online_usrlib="libbfd-2.40.so
-               libhistory.so.8.2
-               libncursesw.so.6.4
-               libm.so.6
-               libreadline.so.8.2
-               libz.so.${zlib_v}
-               $(cd /usr/lib; find libnss*.so* -type f)"
+    libhistory.so.8.2
+    libncursesw.so.6.4
+    libm.so.6
+    libreadline.so.8.2
+    libz.so.${zlib_v}
+    $(cd /usr/lib; find libnss*.so* -type f)"
 
 for BIN in $online_usrbin; do
     cp /usr/bin/$BIN /tmp/$BIN
@@ -78,6 +80,6 @@ unset BIN LIB save_usrlib online_usrbin online_usrlib
 rm -rf /tmp/*
 
 find /usr/lib /usr/libexec -name \*.la -delete
-find /usr -depth -name $(uname -m)-minl-linux-gnu\* | xargs rm -rf
+find /usr -depth -name $(uname -m)-${SYS_NAME}-linux-gnu\* | xargs rm -rf
 
 touch $PROGRESS_DIR/3-finish

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-gcc ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building gcc..."
@@ -18,9 +20,9 @@ tar xf gcc-${gcc_v}.tar.xz
 cd gcc-${gcc_v}
 
 case $(uname -m) in
-	x86_64) 
-		sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64 
-		;;
+    x86_64) 
+        sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64 
+        ;;
 esac
 rm -rf build
 mkdir build
@@ -34,11 +36,13 @@ cd build
     --enable-default-ssp \
     --disable-multilib \
     --disable-bootstrap \
+    --disable-fixincludes \
     --with-system-zlib
 make
 make install
 chown -R root:root /usr/lib/gcc/$(gcc -dumpmachine)/${gcc_v}/include{,-fixed}
-ln -s ../usr/bin/cpp /usr/lib
+ln -s /usr/bin/cpp /usr/lib
+ln -s gcc.1 /usr/share/man/man1/cc.1
 ln -sf ../../libexec/gcc/$(gcc -dumpmachine)/${gcc_v}/liblto_plugin.so /usr/lib/bfd-plugins/
 
 mkdir -p /usr/share/gdb/auto-load/usr/lib

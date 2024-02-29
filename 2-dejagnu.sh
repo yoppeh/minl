@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-dejagnu ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building dejagnu..."
@@ -18,8 +20,7 @@ cd dejagnu-${dejagnu_v}
 mkdir build
 cd build
 
-../configure \
-    --prefix=/usr
+../configure --prefix=/usr
 makeinfo --html --no-split -o doc/dejagnu.html ../doc/dejagnu.texi
 makeinfo --plaintext -o doc/dejagnu.txt ../doc/dejagnu.texi
 

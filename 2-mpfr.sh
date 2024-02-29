@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
@@ -17,19 +19,9 @@ rm -rf mpfr-${mpfr_v}
 tar xf mpfr-${mpfr_v}.tar.xz
 cd mpfr-${mpfr_v}
 
-sed -e 's/+01,234,567/+1,234,567 /' \
-    -e 's/13.10Pd/13Pd/'            \
-    -i tests/tsprintf.c
-
-if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
-disable_static="--disable-static"
-else
-disable_static=""
-fi
-
 ./configure \
     --prefix=/usr \
-	$disable_static \
+    --disable-static \
     --enable-thread-safe \
     --docdir=/usr/share/doc/mpfr-${mpfr_v}
 make

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/1-glibc ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building glibc..."
@@ -17,6 +19,7 @@ cd $MINL/sources
 rm -rf glibc-${glibc_v}
 tar xf glibc-${glibc_v}.tar.xz
 cd glibc-${glibc_v}
+rm -rf build
 
 case $(uname -m) in
     i?86) 
@@ -28,7 +31,7 @@ case $(uname -m) in
         ;;
 esac
 
-patch -Np1 -i ../glibc-2.37-fhs-1.patch
+patch -Np1 -i ../glibc-${glibc_v}-fhs-1.patch
 
 mkdir build
 cd build
@@ -41,13 +44,12 @@ echo "rootsbindir=/usr/sbin" > configparms
     --build=$(../scripts/config.guess) \
     --enable-kernel=${linux_mm_v} \
     --with-headers=$MINL/usr/include \
+    --disable-nscd \
     libc_cv_slibdir=/usr/lib
 
-make -j1
+make
 make DESTDIR=$MINL install
 sed 'RTLDLIST=/s@/usr@@g' -i $MINL/usr/bin/ldd
-
-$MINL/tools/libexec/gcc/$MINL_TGT/${gcc_v}/install-tools/mkheaders
 
 cd $MINL/sources
 rm -rf glibc-${glibc_v}

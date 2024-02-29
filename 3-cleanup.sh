@@ -1,10 +1,12 @@
 #!/bin/bash
 
+export STAGE=3
+
 . ./environment.sh
 . ./package-versions.sh
 
 if [ -f $PROGRESS_DIR/3-cleanup ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "cleaning up..."

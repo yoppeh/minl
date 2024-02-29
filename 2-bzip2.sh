@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-bzip2 ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building bzip2..."
@@ -33,9 +35,7 @@ for i in /usr/bin/{bzcat,bunzip2} ; do
     ln -sf bzip2 $i
 done
 
-if [ "$KEEP_STATIC_LIBS" -eq "0" ] ; then
 rm -f /usr/lib/libbz2.a
-fi
 
 cd ..
 rm -rf bzip2-${bzip2_v}

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-coreutils ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building coreutils..."
@@ -17,7 +19,8 @@ set -h
 tar xf coreutils-${coreutils_v}.tar.xz
 cd coreutils-${coreutils_v}
 
-patch -Np1 -i ../coreutils-9.1-i18n-1.patch
+patch -Np1 -i ../coreutils-${coreutils_v}-i18n-1.patch
+sed -e '/n_out += n_hold/,+4 s|.*bufsize.*|//&|' -i src/split.c
 autoreconf -fiv
 FORCE_UNSAFE_CONFIGURE=1 ./configure \
     --prefix=/usr \

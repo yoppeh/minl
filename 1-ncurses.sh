@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=1
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/1-ncurses ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building ncurses..."
@@ -15,7 +17,7 @@ set -e
 
 cd $MINL/sources
 rm -rf ncurses-${ncurses_v}
-tar xf ncurses-${ncurses_v}.tar.gz
+tar xf ncurses-${ncurses_v}.tar.xz
 cd ncurses-${ncurses_v}
 
 sed -i s/mawk// configure

@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-binutils ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building binutils..."
@@ -28,13 +30,11 @@ cd build
     --enable-shared \
     --disable-werror \
     --enable-64-bit-bfd \
-    --with-system-zlib
+    --with-system-zlib \
+    --enable-default-hash-style=gnu
 make tooldir=/usr
 make tooldir=/usr install
-if [ "$KEEP_STATIC_LIBS" == "0" ] ; then
-rm -f /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a
-fi
-rm -f /usr/share/man/man1/{gprofng,gp-*}.1
+rm -f /usr/lib/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a
 
 cd ../..
 rm -rf binutils-${binutils_v}

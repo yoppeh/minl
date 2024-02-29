@@ -1,12 +1,14 @@
 #!/bin/bash
 
+export STAGE=2
+
 . ./environment.sh
 . ./package-versions.sh
 
 export FORCE_UNSAFE_CONFIGURE=1
 
 if [ -f $PROGRESS_DIR/2-glibc ] ; then
-	exit 0
+    exit 0
 fi
 
 echo "building glibc..."
@@ -15,8 +17,10 @@ set -e
 
 tar xf glibc-${glibc_v}.tar.xz
 cd glibc-${glibc_v}
+rm -rf build
+
 patch -Np1 -i ../glibc-${glibc_v}-fhs-1.patch
-sed '/width -=/s/workend - string/number_length/' -i stdio-common/vfprintf-process-arg.c
+
 mkdir build
 cd build
 echo "rootsbindir=/usr/sbin" > configparms
@@ -26,21 +30,16 @@ echo "rootsbindir=/usr/sbin" > configparms
     --disable-werror \
     --enable-kernel=${linux_mm_v} \
     --enable-stack-protector=strong \
-    --with-headers=/usr/include \
+    --disable-nscd \
     libc_cv_slibdir=/usr/lib
 make
 touch /etc/ld.so.conf
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 make install
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
-cp -v ../nscd/nscd.conf /etc/nscd.conf
-mkdir -p /var/cache/nscd 
-
-install -Dm644 ../nscd/nscd.tmpfiles /usr/lib/tmpfiles.d/nscd.conf
-install -Dm644 ../nscd/nscd.service /usr/lib/systemd/system/nscd.service
 
 mkdir -p /usr/lib/locale
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
